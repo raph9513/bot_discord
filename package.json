@@ -1,0 +1,14 @@
+{
+  "name": "bot_discord",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "@discordjs/voice": "^0.18.0",
+    "discord.js": "^14.21.0",
+    "dotenv": "^17.2.0",
+    "ffmpeg-static": "^5.2.0"
+  }
+}

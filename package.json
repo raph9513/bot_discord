@@ -6,9 +6,12 @@
     "start": "node index.js"
   },
   "dependencies": {
+    "discord.js": "^14.14.1",
     "@discordjs/voice": "^0.18.0",
-    "discord.js": "^14.21.0",
-    "dotenv": "^17.2.0",
-    "ffmpeg-static": "^5.2.0"
+    "play-dl": "^1.9.7",
+    "opusscript": "^0.1.1",
+    "ffmpeg-static": "^5.1.0",
+    "express": "^4.19.2",
+    "dotenv": "^17.2.1"
   }
 }

@@ -16,6 +16,22 @@ if (!DISCORD_TOKEN || !PREFIX) {
   console.error('❌ Il faut définir DISCORD_TOKEN et PREFIX en config vars !');
   process.exit(1);
 }
+try {
+  const raw = fs.readFileSync('./cookies.json', 'utf8');
+  const list = JSON.parse(raw);
+  if (Array.isArray(list)) {
+    const cookieString = list
+      .filter((c) => c.domain && c.domain.includes('youtube.com'))
+      .map((c) => `${c.name}=${c.value}`)
+      .join('; ');
+    if (cookieString) {
+      play.setToken({ youtube: { cookie: cookieString } });
+      console.log('✅ Cookies YouTube chargés dans play-dl');
+    }
+  }
+} catch (err) {
+  console.warn('⚠️ cookies.json introuvable ou invalide ; les requêtes se feront sans cookie.');
+}
 
 // Client Discord v14 avec les intents nécessaires
 const client = new Client({

@@ -1,6 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const playdl = require("play-dl");
+
 const {
   Client,
   GatewayIntentBits,
@@ -20,6 +21,16 @@ const {
   USE_COOKIES = "true",
   PORT = 8080,
 } = process.env;
+
+if (USE_COOKIES.toLowerCase() === "true") {
+  try {
+    const cookies = require(COOKIE_PATH);
+    playdl.setToken({ cookies });
+    console.log("[INFO] Cookies chargées depuis", COOKIE_PATH);
+  } catch (err) {
+    console.warn("[WARN] Impossible de charger les cookies:", err.message);
+  }
+}
 
 // ─── Vérifications de base ───────────────────────────────────────────
 if (!DISCORD_TOKEN || !PREFIX) {
